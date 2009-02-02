@@ -1,0 +1,44 @@
+\documentclass{skeleton}
+
+\usepackage[british]{babel}
+
+\casenumber{Appeal No: 123456/2007}
+\claimant{Bardell}
+\respondent{Pickwick}
+\venue{Court of Appeal (Civil)}
+\doctype{Skeleton argument for the claimant}
+
+\counsel{Michael Reed}
+\chambers{Free Representation Unit}
+\date{\today}
+
+\begin{document}
+	
+	\legalhead
+			
+	\pa This is an example file, produced by \texttt{skeleton}, a \LaTeX\ class for creating British legal documents, in particular skeleton arguments.
+	
+	\pa This document demonstrates some of \texttt{skeleton}'s functunality. For example, the heading above has been produced automatically from information provided in the preamble. Legal style paragraph numbering is also made easy.
+	
+	\pa Quotations from statutes are formatted appropriately:
+	
+	\begin{statquote}
+	\stathead{s98}{Employment Act 1996}
+		\stat{1}{In determining for the purposes of this Part whether the dismissal of an employee is fair or unfair, it is for the employer to show---}
+		\begin{instatquote}
+			\stat{a}{the reason (or, if more than one, the principal reason) for the dismissal, and}
+			\stat{b}{that it is either a reason falling within subsection (2) or some other substantial reason of a kind such as to justify the dismissal of an employee holding the position which the employee held.}
+			\end{instatquote}
+	\end{statquote}
+	
+	\pa Quotes from case-law are handled with \LaTeX's normal quotation function. For example, in Miller v Jackson, Lord Denning said:
+	
+	\begin{quotation}
+		In summertime village cricket is the delight of everyone. Nearly every village has its own cricket field where the young men play and the old men watch. In the village of Lintz in County Durham they have their own ground, where they have played these last seventy years. They tend it well. The wicket area is well rolled and mown. The outfield is kept short. It has a good club-house for the players and seats for the onlookers.
+	\end{quotation} 
+
+	\pa Finally, \texttt{skeleton} will produce an appropriate signature, again from information provided in the preamble.
+		
+\sign
+	
+\end{document}
