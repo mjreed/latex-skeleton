@@ -17,7 +17,7 @@
 \let\hangafter\@hangfrom
 
 %Create paragraph command
-\newcommand{\pa}{\addtocounter{legalcount}{1}\hangafter{\thelegalcount. }}
+\newcommand{\pa}{\refstepcounter{legalcount}\hangafter{\thelegalcount. }}
 
 %
 % HEADING AND SIGNATURE
