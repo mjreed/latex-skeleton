@@ -3,7 +3,8 @@
 \ProvidesClass{skeleton}
 
 % Load Artice Class
-\LoadClass[12pt, oneside]{article}
+
+\LoadClassWithOptions{article}
 
 %
 %Paragraph Numbering
@@ -33,7 +34,6 @@
 
 \newcommand{\@respondent}{}
 \newcommand{\respondent}[1]{\renewcommand{\@respondent}{#1}}
-
 
 \newcommand{\@venue}{}
 \newcommand{\venue}[1]{\renewcommand{\@venue}{#1}}
