@@ -3,11 +3,10 @@
 \ProvidesClass{skeleton}
 
 % Load Artice Class
-
 \LoadClassWithOptions{article}
 
 %
-%Paragraph Numbering
+%PARAGRAPH NUMBERING
 %
 
 %Set up counter
@@ -21,7 +20,7 @@
 \newcommand{\pa}{\refstepcounter{legalcount}\hangafter{\thelegalcount. }}
 
 %
-% HEADING AND SIGNATURE
+% LEGAL HEADING AND SIGNATURE
 %
 
 % Set up commands for inputing case information
@@ -46,7 +45,6 @@
 
 \newcommand{\@chambers}{}
 \newcommand{\chambers}[1]{\renewcommand{\@chambers}{#1}}
-
 
 % Create Legal Heading
 \newcommand{\legalhead}
@@ -85,8 +83,48 @@
 \end{flushright}}
 
 %
-%Formating
+%SECTIONS
 %
+
+% Supress numbered sections
+\setcounter{secnumdepth}{-2}
+
+%Format Section
+\renewcommand\section{\@startsection
+{section}{1}{0mm}%
+{-\baselineskip}%
+{0.5\baselineskip}%
+{\sffamily\large}%
+}
+
+%Format SubSection
+\renewcommand\subsection{\@startsection
+{subsection}{2}{0mm}%
+{-\baselineskip}%
+{0.5\baselineskip}%
+{\sffamily\normalsize}%
+}
+
+%Format SubSubSection
+\renewcommand\subsubsection{\@startsection
+{subsubsection}{3}{0mm}%
+{-\baselineskip}%
+{0.5\baselineskip}%
+{\sffamily\normalsize\slshape}%
+}
+
+%Format Paragraph
+\renewcommand\paragraph{\@startsection
+{paragraph}{4}{0mm}%
+{-\baselineskip}%
+{0.1\baselineskip}%
+{\normalfont\normalsize}%
+}
+
+%
+%FORMATING
+%
+
 %Adjust distance after paragraphs
 \setlength{\parskip}{1em}
 
