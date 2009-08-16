@@ -125,6 +125,10 @@
 %FORMATING
 %
 
+%Use letters in enumerate
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+
 %Adjust distance after paragraphs
 \setlength{\parskip}{1em}
 
