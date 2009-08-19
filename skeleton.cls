@@ -132,6 +132,18 @@
 %Adjust distance after paragraphs
 \setlength{\parskip}{1em}
 
+%Apply running headers
+\usepackage{fancyhdr}
+\fancypagestyle{running}{%
+\lhead{} 
+\chead{} 
+\rhead{\leftmark} 
+\lfoot{\@doctype} 
+\cfoot{} 
+\rfoot{\thepage} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}}
+
 %Typeset legislation
 \newenvironment{statquote}%
 {%
