@@ -73,6 +73,17 @@
 \end{center}
 }
 
+% Create Short Heading for Internal Docs
+\newcommand{\shorthead}
+{
+\thispagestyle{empty}
+\noindent \textsc{\@claimant}
+\textsc{\@respondent}\\
+\rule{7cm}{0.2mm}\\
+\@doctype\\
+\rule{7cm}{0.2mm}\\
+}
+
 % Create Legal Signature
 \newcommand{\sign}
 {
