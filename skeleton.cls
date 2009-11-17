@@ -136,6 +136,10 @@
 %FORMATING
 %
 
+%Load Fonts: palatino and helvetica
+\usepackage{mathpazo}
+\usepackage{helvet}
+
 %Use letters in enumerate
 \renewcommand{\labelenumi}{\alph{enumi}.}
 \renewcommand{\labelenumii}{\arabic{enumii})}
