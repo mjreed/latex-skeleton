@@ -159,6 +159,21 @@
 \renewcommand{\headrulewidth}{0pt} 
 \renewcommand{\footrulewidth}{0pt}}
 
+%Format Table of Contents
+\usepackage{titletoc}
+\contentsmargin{0pt}
+\titlecontents{section}[0pt]
+	{\ssfseries\large\thecontentspage\quad}
+	{}{}{}{}
+\newcommand\xquad
+	{\hspace{1em plus.4em minus.4em}}
+\titlecontents*{subsection}[0pt]
+	{\filright\small}{}{}
+	{,~\thecontentspage}
+	[\xquad\textbullet\xquad][]
+\setcounter{tocdepth}{2}
+
+
 %Typeset legislation
 \newenvironment{statquote}%
 {%
