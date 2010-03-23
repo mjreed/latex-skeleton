@@ -77,7 +77,7 @@
 \newcommand{\shorthead}
 {
 \thispagestyle{empty}
-\noindent \textsc{\@claimant}
+\noindent \textsc{\@claimant} v.
 \textsc{\@respondent}\\
 \rule{7cm}{0.2mm}\\
 \@doctype\\
