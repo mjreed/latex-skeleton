@@ -3,7 +3,14 @@
 \ProvidesClass{skeleton}
 
 % Load Artice Class
-\LoadClassWithOptions{article}
+\LoadClassWithOptions{memoir}
+
+%
+%LAYOUT SETTINGS
+%
+\semiisopage
+\settrims{0.5\trimtop}{0.5\trimedge}
+\checkandfixthelayout
 
 %
 %PARAGRAPH NUMBERING
@@ -148,16 +155,24 @@
 \setlength{\parskip}{1em}
 
 %Apply running headers
-\usepackage{fancyhdr}
-\fancypagestyle{running}{%
-\lhead{} 
-\chead{} 
-\rhead{\leftmark} 
-\lfoot{\@doctype} 
-\cfoot{} 
-\rfoot{\thepage} 
-\renewcommand{\headrulewidth}{0pt} 
-\renewcommand{\footrulewidth}{0pt}}
+\makepagestyle{running}
+\makepsmarks{running}{%
+\nouppercaseheads
+\createmark{chapter}{both}{nonumber}{}{}
+\createmark{section}{right}{shownumber}{}{. \space} 
+\createplainmark{toc}{both}{\contentsname} 
+\createplainmark{lof}{both}{\listfigurename} 
+\createplainmark{lot}{both}{\listtablename}
+\createplainmark{bib}{both}{\bibname} 
+\createplainmark{index}{both}{\indexname} 
+\createplainmark{glossary}{both}{\glossaryname}
+}
+
+\makeheadrule{running}{\textwidth}{0.2pt}
+\makeevenhead{running}{}{}{\rightmark} 
+\makeoddhead{running}{}{}{\rightmark}
+\makeevenfoot{running}{}{}{\thepage}
+\makeoddfoot{running}{}{}{\thepage}
 
 %Format Table of Contents
 \usepackage{titletoc}
