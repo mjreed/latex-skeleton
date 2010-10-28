@@ -144,7 +144,7 @@
 %
 
 %Load Fonts: palatino and helvetica
-\usepackage{mathpazo}
+\usepackage[sc]{mathpazo}
 \usepackage{helvet}
 
 %Use letters in enumerate
