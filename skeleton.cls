@@ -20,11 +20,8 @@
 \newcounter{legalcount} %Create the counter
 \setcounter{legalcount}{0} %Set it to zero
 
-%Set up hanging
-\let\hangafter\@hangfrom
-
 %Create paragraph command
-\newcommand{\pa}{\refstepcounter{legalcount}\hangafter{\thelegalcount. }}
+\newcommand{\pa}{\refstepcounter{legalcount}\hangfrom{\makebox[0em][r]{\thelegalcount. }}}
 
 %
 % LEGAL HEADING AND SIGNATURE
