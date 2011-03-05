@@ -5,12 +5,18 @@
 % Load Artice Class
 \LoadClassWithOptions{memoir}
 
+\RequirePackage{arrayjob}
+\RequirePackage{multido}
+\RequirePackage{xifthen}
 %
 %LAYOUT SETTINGS
 %
 \semiisopage
 \settrims{0.5\trimtop}{0.5\trimedge}
 \checkandfixthelayout
+
+\newcommand{\partysize}{\large}
+\newcommand{\@temp}{}
 
 %
 %PARAGRAPH NUMBERING
@@ -29,14 +35,42 @@
 
 % Set up commands for inputing case information
 
+
 \newcommand{\@casenumber}{}
 \newcommand{\casenumber}[1]{\renewcommand{\@casenumber}{#1}}
 
+\newarray\Claimants
+\newarray\ClDescr
+
+\newcounter{claimantcount}
+\setcounter{claimantcount}{0} %We have no claimants until a \claimant{} is issued.
+
 \newcommand{\@claimant}{}
-\newcommand{\claimant}[1]{\renewcommand{\@claimant}{#1}}
+\newcommand{\claimant}[2][Claimant]{
+	\stepcounter{claimantcount}
+	\Claimants(\value{claimantcount})={#2}
+	\ClDescr(\value{claimantcount})={#1}
+	\ifthenelse{\value{claimantcount}=1}{
+		\renewcommand{\@claimant}{#2}
+	}{}
+}
+
+\newarray\Respondents
+\newarray\RpDescr
+
+\newcounter{respondentcount}
+\setcounter{respondentcount}{0} %We have no claimants until a \respondent{} is issued.
 
 \newcommand{\@respondent}{}
-\newcommand{\respondent}[1]{\renewcommand{\@respondent}{#1}}
+\newcommand{\respondent}[2][Respondent]{
+	\stepcounter{respondentcount}
+	\Respondents(\value{respondentcount})={#2}
+	\RpDescr(\value{respondentcount})={#1}
+	\ifthenelse{\value{respondentcount}=1}{
+		\renewcommand{\@respondent}{#2}
+	}{}
+}
+
 
 \newcommand{\@venue}{}
 \newcommand{\venue}[1]{\renewcommand{\@venue}{#1}}
@@ -54,38 +88,72 @@
 \newcommand{\legalhead}
 {
 \thispagestyle{empty}
-\noindent \textsc{In the} \hfill \textsc{\@casenumber \\ \@venue}
-\vspace{0.5ex} \\
+
+\noindent
+\begin{minipage}[t]{.45\linewidth}
+\vspace{0pt}
+\raggedright
+\noindent \textsc{In the \newline \@venue}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\linewidth}
+\vspace{0pt}
+\raggedleft
+\noindent \textsc{\@casenumber}
+\end{minipage}
+
+
+\vspace{0.5ex} 
 \noindent \textsc{Between}
 
 \vspace{1ex}
-\large
+
 \begin{center}
-\textsc{\@claimant}
 
-\vspace{0.5em}
+\multido{\iClaimant=1+1}{\value{claimantcount}}{%
+	\noindent
+	\partysize
+	\parbox{0.2\textwidth}{\small (\iClaimant)}
+	\parbox{0.55\textwidth}{\centering \textsc{\Claimants(\iClaimant)}}
+	\parbox{0.2\textwidth}{\raggedleft \small \textsc{[\ClDescr(\iClaimant)]}}
+	\newline
+	\normalsize
+	\newline
+	}
+\vspace{-1em}
 \small -and-
+\vspace{1em}
+
+
+\multido{\iRespondent=1+1}{\value{respondentcount}}{%
+	\noindent
+	\partysize
+	\parbox{0.2\textwidth}{\small (\iRespondent)}
+	\parbox{0.55\textwidth}{\centering \textsc{\Respondents(\iRespondent)}}
+	\parbox{0.2\textwidth}{\raggedleft \small \textsc{[\RpDescr(\iRespondent)]}}
+	\newline
+	\normalsize
+	\newline
+	}
+\vspace{-1.6em}
+
 \large
-\vspace{0.5em}
-
-\textsc{\@respondent}
-\vspace{0.5em}
-
-\rule{10cm}{0.5mm}\\
+\rule{10cm}{0.1mm}\\
 \@doctype\\
-\rule[1ex]{10cm}{0.5mm}\\
+\rule[1ex]{10cm}{0.1mm}\\
 \end{center}
 }
-
 % Create Short Heading for Internal Docs
 \newcommand{\shorthead}
 {
 \thispagestyle{empty}
+\begin{center}
 \noindent \textsc{\@claimant} v.
 \textsc{\@respondent}\\
 \rule{7cm}{0.2mm}\\
 \@doctype\\
 \rule{7cm}{0.2mm}\\
+\end{center}
 }
 
 % Create Legal Signature
@@ -137,7 +205,7 @@
 }
 
 %
-%FORMATING
+%FORMATTING
 %
 
 %Load Fonts: palatino and helvetica
