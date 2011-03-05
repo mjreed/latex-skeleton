@@ -2,8 +2,19 @@
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{skeleton}
 
-% Load Artice Class
-\LoadClassWithOptions{memoir}
+\DeclareOption{fullserif}{
+	\newcommand{\@fullserif}{}
+}
+
+\DeclareOption*{%
+	\PassOptionsToClass{\CurrentOption}{memoir}
+}
+
+\ProcessOptions\relax
+
+
+% Load Article Class
+\LoadClass{memoir}
 
 \RequirePackage{arrayjob}
 \RequirePackage{multido}
@@ -169,9 +180,11 @@
 %SECTIONS
 %
 
-% Supress numbered sections
+% Suppress numbered sections
 \setcounter{secnumdepth}{-2}
 
+
+\ifthenelse{\isundefined{\@fullserif}}{
 %Format Section
 \renewcommand\section{\@startsection
 {section}{1}{0mm}%
@@ -196,6 +209,32 @@
 {\sffamily\normalsize\slshape}%
 }
 
+}{
+%Format Section
+\renewcommand\section{\@startsection
+{section}{1}{0mm}%
+{-\baselineskip}%
+{0.5\baselineskip}%
+{\Large}%
+}
+
+%Format SubSection
+\renewcommand\subsection{\@startsection
+{subsection}{2}{0mm}%
+{-\baselineskip}%
+{0.25\baselineskip}%
+{\large}%
+}
+
+%Format SubSubSection
+\renewcommand\subsubsection{\@startsection
+{subsubsection}{3}{0mm}%
+{-\baselineskip}%
+{0.1\baselineskip}%
+{\normalsize\slshape}%
+}
+}
+
 %Format Paragraph
 \renewcommand\paragraph{\@startsection
 {paragraph}{4}{0mm}%
@@ -203,7 +242,6 @@
 {0.1\baselineskip}%
 {\normalfont\normalsize}%
 }
-
 %
 %FORMATTING
 %
