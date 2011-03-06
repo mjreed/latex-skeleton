@@ -210,6 +210,16 @@
 
 
 \ifthenelse{\isundefined{\@fullserif}}{
+%If fullserif is undefined - i.e. normal
+%Format Chapter
+\renewcommand\chapter{\@startsection
+{section}{1}{0mm}%
+{-\baselineskip}%
+{0.5\baselineskip}%
+{\sffamily\Large}%
+}
+
+
 %Format Section
 \renewcommand\section{\@startsection
 {section}{1}{0mm}%
@@ -235,6 +245,15 @@
 }
 
 }{
+%if \@fullsans has been defined:
+%Format Chapter
+\renewcommand\chapter{\@startsection
+{section}{1}{0mm}%
+{-\baselineskip}%
+{0.5\baselineskip}%
+{\LARGE}%
+}
+
 %Format Section
 \renewcommand\section{\@startsection
 {section}{1}{0mm}%
