@@ -6,6 +6,10 @@
 	\newcommand{\@fullserif}{}
 }
 
+\DeclareOption{detailedhead}{
+	\newcommand{\@detailedhead}{}
+}
+
 \DeclareOption*{%
 	\PassOptionsToClass{\CurrentOption}{memoir}
 }
@@ -124,28 +128,47 @@
 \multido{\iClaimant=1+1}{\value{claimantcount}}{%
 	\noindent
 	\partysize
-	\parbox{0.2\textwidth}{\small (\iClaimant)}
-	\parbox{0.55\textwidth}{\centering \textsc{\Claimants(\iClaimant)}}
-	\parbox{0.2\textwidth}{\raggedleft \small \textsc{[\ClDescr(\iClaimant)]}}
+	\parbox{0.215\textwidth}{%
+		\ifthenelse{\isundefined{\@detailedhead}}
+		{\rule{2mm}{0pt}}
+		{\small (\iClaimant)}
+	}
+	\parbox{0.55\textwidth}{%
+		\centering \textsc{\Claimants(\iClaimant)}
+	}
+	\parbox{0.215\textwidth}{%
+		\ifthenelse{\isundefined{\@detailedhead}}
+		{\rule{2mm}{0pt}}
+		{\raggedleft \small \textsc{[\ClDescr(\iClaimant)]}}
+	}
 	\newline
 	\normalsize
 	\newline
-	}
+}
 \vspace{-1em}
 \small -and-
 \vspace{1em}
 
-
 \multido{\iRespondent=1+1}{\value{respondentcount}}{%
 	\noindent
 	\partysize
-	\parbox{0.2\textwidth}{\small (\iRespondent)}
-	\parbox{0.55\textwidth}{\centering \textsc{\Respondents(\iRespondent)}}
-	\parbox{0.2\textwidth}{\raggedleft \small \textsc{[\RpDescr(\iRespondent)]}}
+	\parbox{0.215\textwidth}{%
+		\ifthenelse{\isundefined{\@detailedhead}}
+		{\rule{2mm}{0pt}}
+		{\small (\iRespondent)}
+	}
+	\parbox{0.55\textwidth}{%
+		\centering \textsc{\Respondents(\iRespondent)}
+	}
+	\parbox{0.215\textwidth}{%
+		\ifthenelse{\isundefined{\@detailedhead}}
+		{\rule{2mm}{0pt}}
+		{\raggedleft \small \textsc{[\RpDescr(\iRespondent)]}}
+	}
 	\newline
 	\normalsize
 	\newline
-	}
+}
 \vspace{-1.6em}
 
 \large
