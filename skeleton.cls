@@ -26,8 +26,10 @@
 %
 %LAYOUT SETTINGS
 %
+\stockaiv
+\settrimmedsize{\stockheight}{\stockwidth}{*}
 \semiisopage
-\settrims{0.5\trimtop}{0.5\trimedge}
+\setlrmargins{*}{*}{1}
 \checkandfixthelayout
 
 \newcommand{\partysize}{\large}
