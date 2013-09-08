@@ -1,7 +1,14 @@
 \documentclass{skeleton}
 
 \usepackage[british]{babel}
-\usepackage[babel=true]{microtype}
+
+%Setting up fonts -- Delete if not using ConTeXt. Change fonts as necessary / desirable.
+\usepackage{fontspec,lipsum}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage[small,sf]{titlesec}
+\setmainfont[SmallCapsFont={Equity Caps A}]{Equity Text A}
+\setsansfont{Equity Caps A}
+\setmonofont{Courier Prime}
 
 \pagestyle{plain} %Replace with 'running' for Running Section Headings in top-left
 
